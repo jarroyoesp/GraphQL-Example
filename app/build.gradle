@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.apollographql.apollo'
 }
 
 android {
@@ -99,4 +100,7 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:2.1.0"
 
 }
-
+apollo {
+    // instruct the compiler to generate Kotlin models
+    generateKotlinModels.set(true)
+}

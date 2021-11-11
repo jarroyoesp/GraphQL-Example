@@ -1,0 +1,10 @@
+query CountryList {
+   Country {
+        _id
+        alpha2Code
+        alpha3Code
+        name
+        capital
+        populationDensity
+    }
+}
