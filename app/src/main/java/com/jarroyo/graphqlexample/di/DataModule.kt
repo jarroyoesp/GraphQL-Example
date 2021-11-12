@@ -1,6 +1,7 @@
 package com.jarroyo.graphqlexample.di
 
 import android.content.Context
+import com.apollographql.apollo.ApolloClient
 import com.jarroyo.graphqlexample.data.remote.NetworkDataSource
 import com.jarroyo.graphqlexample.data.remote.NetworkDataSourceImpl
 import com.jarroyo.graphqlexample.data.remote.NetworkSystem
@@ -22,7 +23,13 @@ object DataModule {
         NetworkSystemImpl(context) as NetworkSystem
 
     @Provides
-    fun provideRemoteNetworkDataSource(/*apiService: ApiService,*/ networkSystem: NetworkSystem): NetworkDataSource {
-        return NetworkDataSourceImpl(/*apiService,*/ networkSystem)
+    fun provideApolloClient(): ApolloClient = ApolloClient.builder()
+        .serverUrl("https://countries.trevorblades.com/")
+        .build()
+
+    @Provides
+    fun provideRemoteNetworkDataSource(apolloClient: ApolloClient, networkSystem: NetworkSystem): NetworkDataSource {
+        return NetworkDataSourceImpl(apolloClient,  networkSystem)
     }
+
 }
