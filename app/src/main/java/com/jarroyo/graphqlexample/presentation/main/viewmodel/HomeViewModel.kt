@@ -35,7 +35,7 @@ constructor(
         getDataHomeUsecase.invoke().fold(
             {
                 _homeState.value = UIHomeState.HideLoading
-                _homeState.value = UIHomeState.Error
+                _homeState.value = UIHomeState.Error(it)
             },
             { listPoiItem ->
                 _homeState.value = UIHomeState.HideLoading

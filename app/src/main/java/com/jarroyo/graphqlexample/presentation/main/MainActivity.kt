@@ -12,6 +12,7 @@ import com.jarroyo.graphqlexample.domain.model.Country
 import com.jarroyo.graphqlexample.presentation.main.model.UIHomeState
 import com.jarroyo.graphqlexample.presentation.main.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Exception
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     private fun handleUI(state: UIHomeState) {
         Log.d(TAG, "[handleUI] $state")
         when (state) {
-            UIHomeState.Error -> showError()
+            is UIHomeState.Error -> showError(state.exception)
             UIHomeState.NoContents -> { }
             is UIHomeState.ShowData -> showData(state.homeData)
             UIHomeState.HideLoading -> {}
@@ -47,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showError() {
-        Toast.makeText(this, "showError", Toast.LENGTH_SHORT).show()
+    private fun showError(e: Exception) {
+        Toast.makeText(this, "$e", Toast.LENGTH_SHORT).show()
     }
 
     private fun showData(homeData: List<Country>) {
