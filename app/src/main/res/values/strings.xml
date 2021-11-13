@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GraphQL Example</string>
+    <string name="retry">Retry</string>
+    <string name="error_message">Something goes wrong. Try again.</string>
 </resources>

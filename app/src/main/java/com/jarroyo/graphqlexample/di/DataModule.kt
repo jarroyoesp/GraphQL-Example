@@ -24,7 +24,7 @@ object DataModule {
 
     @Provides
     fun provideApolloClient(): ApolloClient = ApolloClient.builder()
-        .serverUrl("https://countries-274616.ew.r.appspot.com/")
+        .serverUrl("https://rickandmortyapi.com/graphql")
         .build()
 
     @Provides
